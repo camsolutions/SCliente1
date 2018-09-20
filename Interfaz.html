@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://www.gstatic.com/firebasejs/5.3.1/firebase.js"></script>
+  <script type="text/javascript">
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCXv4i0clNVzeKsF9dm2Fxjy4-7EY5zvpg",
+    authDomain: "seccionm-8589b.firebaseapp.com",
+    databaseURL: "https://seccionm-8589b.firebaseio.com",
+    projectId: "seccionm-8589b",
+    storageBucket: "seccionm-8589b.appspot.com",
+    messagingSenderId: "946318383492"
+  };
+  firebase.initializeApp(config);
+</script>
+	<title>Interfaz</title>
+</head>
+<body>
+	<header id="header" class="alt">
+				<div class="inner">
+					<h1>Interfaz Del Usuario</h1>
+					<p>Agrega, modifica o elimina tus productos</p>
+				</div>
+		
+			</header>
+<section class="text-center mt-3">
+	<!-- Agregar Productos -->
+	<a class="btn btn-primary" data-toggle="collapse" href="#collapseAP" role="button" aria-expanded="false" aria-controls="collapseAP">
+    Agregar Productos
+  </a>
+  <div class="collapse" id="collapseAP">
+  <div class="card card-body">
+
+		<label>ID del Producto</label>
+		<input type="text" id="IDA">
+
+		<label>Nombre del Producto</label>
+		<input type="text" id="NombreA">
+
+		<label>Precio</label>
+		<input type="text" id="PrecioA">
+
+		<label>Disponibilidad</label>
+		<input type="text" id="DisponibilidadA">
+
+		<button class="mt-5" onclick="IngresarP()"> Ingresar Producto</button>
+
+	</div>
+</div>
+  <!-- Modificar Productos -->
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseMP" role="button" aria-expanded="false" aria-controls="collapseMP">
+    Modificar Productos
+  </a>
+  <div class="collapse" id="collapseMP">
+  <div class="card card-body">
+  
+
+		<label>ID del Producto</label>
+		<input type="text" id="IDM">
+
+		<label>Nombre del Producto</label>
+		<input type="text" id="NombreM">
+
+		<label>Precio</label>
+		<input type="text" id="PrecioM">
+
+		<label>Disponibilidad</label>
+		<input type="text" id="DisponibilidadM">
+
+		<button class="mt-5" onclick="ModificarP()"> Modificar Producto</button>
+
+
+	</div>
+</div>
+	<!-- Eliminar Productos -->
+	<a class="btn btn-primary" data-toggle="collapse" href="#collapseEP" role="button" aria-expanded="false" aria-controls="collapseEP">
+    Eliminar Productos
+  </a>
+  <div class="collapse" id="collapseEP">
+  <div class="card card-body">
+  
+		<label>ID del Producto</label>
+		<input type="text" id="IDP">
+
+		<button class="mt-5" onclick="EliminarP()"> Eliminar Producto</button>
+
+	</div>
+</div>
+</section>
+<section>
+	
+</section>
+</body>
+<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+</html>

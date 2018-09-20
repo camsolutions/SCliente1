@@ -56,55 +56,135 @@
 
 })(jQuery);
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCXv4i0clNVzeKsF9dm2Fxjy4-7EY5zvpg",
-    authDomain: "seccionm-8589b.firebaseapp.com",
-    databaseURL: "https://seccionm-8589b.firebaseio.com",
-    projectId: "seccionm-8589b",
-    storageBucket: "seccionm-8589b.appspot.com",
-    messagingSenderId: "946318383492"
-  };
-  firebase.initializeApp(config);
+   // Initialize Firebase
 
+
+const db = firebase.firestore ();
+ 
 //Variables Productos
 var b=["Producto1","Producto2","Producto3","Producto4","Producto5","Producto6","Producto7",];
 var c=["PrecioP1","PrecioP2","PrecioP3","PrecioP4","PrecioP5","PrecioP6","PrecioP7",];
 var d=["DisponibleP1","DisponibleP2","DisponibleP3","DisponibleP4","DisponibleP5","DisponibleP6","DisponibleP7",];
 var a;
-//Leer Datos
-for (var i = 0 ; i = b.length; i++) {
-	db.collection("ListaP").doc("Producto1")
-    .onSnapshot(function(doc) {
-        console.log("Current data: ", doc.data());
-        a = doc;
-        getElementById(b[i]).innerHTML = a.Name;
-		getElementById(c[i]).innerHTML = a.Price;
-		getElementById(d[i]).innerHTML = a.Availability;
+var docRef;
 
-    });
-}
+//Leer Datos y Visualizar Productos
+
+
 
 	//Agregar Productos
 
-function IngresarP(NProducto,Nombre,Precio,Disponibilidad) {
-	
+function IngresarP() {
 
-db.collection("ListaP").doc(NProducto).set({
+var Producto = document.getElementById("IDA").value;
+var Nombre = document.getElementById("NombreA").value;
+var Precio= document.getElementById("PrecioA").value;
+var Disponibilidad = document.getElementById("DisponibilidadA").value;
+
+docRef = db.collection("Lista").doc(Producto);
+docRef.get().then(function(doc){
+	if (doc.exists) {
+		console.log("El producto ingresado ya se encuentra registrado");
+	}else{
+		
+		db.collection("Lista").doc(Producto).set({
+    ID:Producto,
     Name:Nombre,
     Price:Precio,
     Availability:Disponibilidad
-})
-.then(function(docRef) {
-    console.log("Document written with ID: ", docRef.id);
-})
-.catch(function(error) {
-    console.error("Error adding document: ", error);
-});
+    
+ 
+  })
+	.then(function () {
+		console.log("Producto registrado con exito");
+	})
+	.catch(function(error){
+		console.error("Error al registrar el producto. Codigo de error: ",error);
+	});
+	}
+	}).catch(function(error){
+		console.log("Error en la consulta. Codigo de error: ",error);
+	});
+
+
+ }
+
+  //Modificar Producto
+
+function ModificarP() {
+
+var Producto = document.getElementById("IDM").value;
+var Nombre = document.getElementById("NombreM").value;
+var Precio= document.getElementById("PrecioM").value;
+var Disponibilidad = document.getElementById("DisponibilidadM").value;
+
+docRef = db.collection("Lista").doc(Producto);
+docRef.get().then(function(doc){
+	if (doc.exists) {
+			db.collection("Lista").doc(Producto).set({
+    ID:Producto,
+    Name:Nombre,
+    Price:Precio,
+    Availability:Disponibilidad
+    
+ 
+  })
+	.then(function () {
+		console.log("Producto modificado con exito");
+	})
+	.catch(function(error){
+		console.error("Error al registrar el producto. Codigo de error: ",error);
+	});
+	}else{
+		
+	console.log("El producto ingresado no se encuentra registrado");
+	}
+	}).catch(function(error){
+		console.log("Error en la consulta. Codigo de error: ",error);
+	});
+
+
+		
 }
 
 //Eliminar Productos
+function EliminarP() {
+	var Producto = document.getElementById('IDP').value;
+	db.collection("Lista").doc(Producto).delete().then(function(){
+		console.log("EL producto ha sido eliminado");
+	}).catch(function(error){
+		console.error("Error al elminar producto. Codigo de error: ",error);
+	});
+}
 
-function EliminarP(Nombre) {
-	
+
+	db.collection("Lista").where("ID", "==", "1")
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            console.log(doc);
+             // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            var A = doc.data();
+            
+            
+            
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+           
+    });
+
+function Login() {
+	var Usuario = document.getElementById('Usuario').value;
+	var Contraseña = document.getElementById('Contraseña').value;;
+	if (Usuario == "Charcuteria") && (Contraseña == "4123Char") {
+		location.href = "camsolutions.github.io/SCliente1/Interfaz.html"
+	}
+	else{ alert("Usuario y/o Contraseña Incorrecta");
+}
+}
+function Visible() {
+	document.getElementById('Visible').setAttribute('class',"card border-secondary mb-3 fixed-top visible");
 }
