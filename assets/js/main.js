@@ -186,5 +186,5 @@ function Login() {
 }
 }
 function Visible() {
-	document.getElementById('Visible').setAttribute('class',"card border-secondary mb-3 fixed-top visible");
+	document.getElementById('Visible').setAttribute("class","card border-secondary mb-3 fixed-top visible");
 }
