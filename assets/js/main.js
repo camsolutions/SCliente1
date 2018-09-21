@@ -175,16 +175,16 @@ function EliminarP() {
         console.log("Error getting documents: ", error);
            
     });
+function Visibles() {
+	document.getElementById('Visible').setAttribute("class","card border-secondary mb-3 fixed-top visible");
 
+}
 function Login() {
 	var Usuario = document.getElementById('Usuario').value;
 	var Contraseña = document.getElementById('Contraseña').value;;
-	if (Usuario == "Charcuteria") && (Contraseña == "4123Char") {
+	if ((Usuario == "Charcuteria") && (Contraseña == "4123Char")) {
 		location.href = "camsolutions.github.io/SCliente1/Interfaz.html"
 	}
 	else{ alert("Usuario y/o Contraseña Incorrecta");
 }
-}
-function Visible() {
-	document.getElementById('Visible').setAttribute("class","card border-secondary mb-3 fixed-top visible");
 }
