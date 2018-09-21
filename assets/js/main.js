@@ -183,7 +183,7 @@ function Login() {
 	var Usuario = document.getElementById('Usuario').value;
 	var Contraseña = document.getElementById('Contraseña').value;;
 	if ((Usuario == "Charcuteria") && (Contraseña == "4123Char")) {
-		location.href = "camsolutions.github.io/SCliente1/Interfaz.html"
+		location.href = "https://camsolutions.github.io/SCliente1/Interfaz.html"
 	}
 	else{ alert("Usuario y/o Contraseña Incorrecta");
 }
