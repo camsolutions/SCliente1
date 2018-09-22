@@ -92,6 +92,7 @@ docRef = db.collection("Lista").doc(Producto);
 docRef.get().then(function(doc){
 	if (doc.exists) {
 		console.log("El producto ingresado ya se encuentra registrado");
+		alert("El producto ingresado ya se encuentra registrado");
 	}else{
 		
 		db.collection("Lista").doc(Producto).set({
