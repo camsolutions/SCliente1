@@ -56,17 +56,24 @@
 
 })(jQuery);
 
-   // Initialize Firebase
+ // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCXv4i0clNVzeKsF9dm2Fxjy4-7EY5zvpg",
+    authDomain: "seccionm-8589b.firebaseapp.com",
+    databaseURL: "https://seccionm-8589b.firebaseio.com",
+    projectId: "seccionm-8589b",
+    storageBucket: "seccionm-8589b.appspot.com",
+    messagingSenderId: "946318383492"
+  };
+  firebase.initializeApp(config);
 
 
 const db = firebase.firestore ();
  
 //Variables Productos
-var b=["Producto1","Producto2","Producto3","Producto4","Producto5","Producto6","Producto7",];
-var c=["PrecioP1","PrecioP2","PrecioP3","PrecioP4","PrecioP5","PrecioP6","PrecioP7",];
-var d=["DisponibleP1","DisponibleP2","DisponibleP3","DisponibleP4","DisponibleP5","DisponibleP6","DisponibleP7",];
 var a;
 var docRef;
+
 
 //Leer Datos y Visualizar Productos
 
@@ -157,24 +164,90 @@ function EliminarP() {
 	});
 }
 
-
-	db.collection("Lista").where("ID", "==", "1")
-    .get()
-    .then(function(querySnapshot) {
+var C;
+var D;
+var a;
+var b;
+var c;
+var d;
+	db.collection("Lista")
+    .onSnapshot(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-            console.log(doc);
-             // doc.data() is never undefined for query doc snapshots
+             // doc.data() is never undefined for query doc snapshots.
+
+
+      	
+
+
             console.log(doc.id, " => ", doc.data());
             var A = doc.data();
+            var B = doc.id;
+            if (!(document.getElementById(B))) {
+            var tr2 = document.createElement("tr");
+            tr2.setAttribute("id",B);
+          	var Table = document.getElementById('tabla');
+            Table.appendChild(tr2);	
+            }
             
+            a = "td" +B+"a";
+            b = "td" +B+"b";
+            c = "td" +B+"c";
+            d = "td" +B+"d";
+
+         	if (!(document.getElementById(a))) {
+         	var td1 = document.createElement("td");
+            var p1 = document.createElement("p");
+            p1.setAttribute("id",a);
+           
+            var td2 = document.createElement("td");
+            var p2 = document.createElement("p");
+            p2.setAttribute("id",b);
+           
+
+            var td3 = document.createElement("td");
+            var p3 = document.createElement("p");
+            p3.setAttribute("id",c)
+          
+            var td4 = document.createElement("td");
+            var p4 = document.createElement("p");
+            p4.setAttribute("id",d);
             
+
             
+             td1.appendChild(p1);
+             td2.appendChild(p2);
+             td3.appendChild(p3);
+             td4.appendChild(p4);
+
+             document.getElementById(B).appendChild(td1);
+            document.getElementById(B).appendChild(td2);
+            document.getElementById(B).appendChild(td3);
+            document.getElementById(B).appendChild(td4);
+         	}
+            
+
+
+            
+         	
+         	document.getElementById(a).innerHTML = A.ID;
+            document.getElementById(b).innerHTML = A.Name;
+            document.getElementById(c).innerHTML = A.Price;
+            document.getElementById(d).innerHTML = A.Availability;
+
+
+      
+       
+           
         });
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
            
     });
+	
+
+
+	
 function Visibles() {
 	document.getElementById('Visible').setAttribute("class","card border-secondary mb-3 fixed-top visible");
 
