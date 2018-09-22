@@ -94,7 +94,7 @@ docRef.get().then(function(doc){
 		console.log("El producto ingresado ya se encuentra registrado");
 		alert("El producto ingresado ya se encuentra registrado");
 	}else{
-		
+		if (Producto !== "" && Nombre !== "" && Precio !== "" && Disponibilidad !== "") {
 		db.collection("Lista").doc(Producto).set({
     ID:Producto,
     Name:Nombre,
@@ -112,12 +112,19 @@ docRef.get().then(function(doc){
 		alert("Error al registrar el producto. Codigo de error: ",error);
 
 	});
+	
+		}else{
+			alert("Por favor ingrese todos los datos");
+		}
+	
 	}
+
 	}).catch(function(error){
 		console.log("Error en la consulta. Codigo de error: ",error);
 		alert("Error en la consulta. Codigo de error: ",error);
 
 	});
+
 
 
  }
@@ -130,11 +137,33 @@ var Producto = document.getElementById("IDM").value;
 var Nombre = document.getElementById("NombreM").value;
 var Precio= document.getElementById("PrecioM").value;
 var Disponibilidad = document.getElementById("DisponibilidadM").value;
-
+if (Producto == "") {
+		alert("Ingrese el ID del Producto a Modificar");
+	}
 docRef = db.collection("Lista").doc(Producto);
+
+	
 docRef.get().then(function(doc){
+	//Validando Campos Modificados
+ var A = doc.data();
+if (Nombre == "") {
+		Nombre = A.Name;
+	}
+
+	if (Precio == "") {
+		Precio = A.Price;
+	}
+
+	if (Disponibilidad == "") {
+		Disponibilidad = A.Availability;
+
+	}
+	
+	//Modificando Datos
+
+
 	if (doc.exists) {
-			db.collection("Lista").doc(Producto).set({
+	db.collection("Lista").doc(Producto).set({
     ID:Producto,
     Name:Nombre,
     Price:Precio,
@@ -160,7 +189,6 @@ docRef.get().then(function(doc){
 		console.log("Error en la consulta. Codigo de error: ",error);
 		alert("Error en la consulta. Codigo de error: ",error)
 	});
-
 
 		
 }
@@ -192,66 +220,12 @@ var d;
 
 
       	
-
+            
 
             console.log(doc.id, " => ", doc.data());
             var A = doc.data();
             var B = doc.id;
-            if (!(document.getElementById(B))) {
-            var tr2 = document.createElement("tr");
-            tr2.setAttribute("id",B);
-          	var Table = document.getElementById('tabla');
-            Table.appendChild(tr2);	
-            }
             
-            a = "td" +B+"a";
-            b = "td" +B+"b";
-            c = "td" +B+"c";
-            d = "td" +B+"d";
-
-         	if (!(document.getElementById(a))) {
-         	var td1 = document.createElement("td");
-            var p1 = document.createElement("p");
-            p1.setAttribute("id",a);
-           
-            var td2 = document.createElement("td");
-            var p2 = document.createElement("p");
-            p2.setAttribute("id",b);
-           
-
-            var td3 = document.createElement("td");
-            var p3 = document.createElement("p");
-            p3.setAttribute("id",c)
-          
-            var td4 = document.createElement("td");
-            var p4 = document.createElement("p");
-            p4.setAttribute("id",d);
-            
-
-            
-             td1.appendChild(p1);
-             td2.appendChild(p2);
-             td3.appendChild(p3);
-             td4.appendChild(p4);
-
-             document.getElementById(B).appendChild(td1);
-            document.getElementById(B).appendChild(td2);
-            document.getElementById(B).appendChild(td3);
-            document.getElementById(B).appendChild(td4);
-         	}
-            
-
-
-            
-         	
-         	document.getElementById(a).innerHTML = A.ID;
-            document.getElementById(b).innerHTML = A.Name;
-            document.getElementById(c).innerHTML = A.Price;
-            document.getElementById(d).innerHTML = A.Availability;
-
-
-      
-       
            
         });
     })
