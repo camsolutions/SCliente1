@@ -104,13 +104,18 @@ docRef.get().then(function(doc){
   })
 	.then(function () {
 		console.log("Producto registrado con exito");
+		alert("Producto registrado con exito");
 	})
 	.catch(function(error){
 		console.error("Error al registrar el producto. Codigo de error: ",error);
+		alert("Error al registrar el producto. Codigo de error: ",error);
+
 	});
 	}
 	}).catch(function(error){
 		console.log("Error en la consulta. Codigo de error: ",error);
+		alert("Error en la consulta. Codigo de error: ",error);
+
 	});
 
 
@@ -138,16 +143,21 @@ docRef.get().then(function(doc){
   })
 	.then(function () {
 		console.log("Producto modificado con exito");
+		alert("Producto modificado con exito");
 	})
 	.catch(function(error){
 		console.error("Error al registrar el producto. Codigo de error: ",error);
+		alert("Error al registrar el producto. Codigo de error: ",error);
+
 	});
 	}else{
 		
 	console.log("El producto ingresado no se encuentra registrado");
+	alert("El producto ingresado no se encuentra registrado");
 	}
 	}).catch(function(error){
 		console.log("Error en la consulta. Codigo de error: ",error);
+		alert("Error en la consulta. Codigo de error: ",error)
 	});
 
 
@@ -158,9 +168,13 @@ docRef.get().then(function(doc){
 function EliminarP() {
 	var Producto = document.getElementById('IDP').value;
 	db.collection("Lista").doc(Producto).delete().then(function(){
-		console.log("EL producto ha sido eliminado");
+		console.log("EL producto ha sido eliminado con exito");
+		alert("EL producto ha sido eliminado con exito");
+
 	}).catch(function(error){
 		console.error("Error al elminar producto. Codigo de error: ",error);
+		alert("Error al elminar producto. Codigo de error: ",error);
+
 	});
 }
 
