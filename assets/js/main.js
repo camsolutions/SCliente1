@@ -146,7 +146,7 @@ docRef = db.collection("Lista").doc(Producto);
 docRef.get().then(function(doc){
 	//Validando Campos Modificados
  var A = doc.data();
-if (Nombre == "") {
+    if (Nombre == "") {
 		Nombre = A.Name;
 	}
 
