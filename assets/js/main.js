@@ -197,20 +197,7 @@ docRef.get().then(function(doc){
 //Eliminar Productos
 function EliminarP() {
 	var Producto = document.getElementById('IDP').value;
-	a = Producto+"a";
-    b = Producto+"b";
-    c = Producto+"c";
-    d = Producto+"d";
-
-     e = Producto+"e";
-     f = Producto+"f";
-     g = Producto+"g";
-     h = Producto+"h";
-
-	document.getElementById(e).removeChild(a);
-	document.getElementById(f).removeChild(b);
-	document.getElementById(g).removeChild(c);
-	document.getElementById(h).removeChild(d);
+	
 
 	db.collection("Lista").doc(Producto).delete().then(function(){
 		console.log("EL producto ha sido eliminado con exito");
