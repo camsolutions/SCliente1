@@ -23,26 +23,36 @@ var d;
             Table.appendChild(tr2);	
             }
             
-            a = "td" +B+"a";
-            b = "td" +B+"b";
-            c = "td" +B+"c";
-            d = "td" +B+"d";
+            a = B+"a";
+            b = B+"b";
+            c = B+"c";
+            d = B+"d";
+
+            e = B+"e";
+            f = B+"f";
+            g = B+"g";
+            h = B+"h";
+
 
          	if (!(document.getElementById(a))) {
          	var td1 = document.createElement("td");
+            td1.setAttribute("id",e);
             var p1 = document.createElement("p");
             p1.setAttribute("id",a);
            
             var td2 = document.createElement("td");
+            td2.setAttribute("id",f);
             var p2 = document.createElement("p");
             p2.setAttribute("id",b);
            
 
             var td3 = document.createElement("td");
+            td3.setAttribute("id",g);
             var p3 = document.createElement("p");
             p3.setAttribute("id",c)
           
             var td4 = document.createElement("td");
+            td4.setAttribute("id",h);
             var p4 = document.createElement("p");
             p4.setAttribute("id",d);
             

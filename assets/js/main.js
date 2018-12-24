@@ -57,13 +57,14 @@
 })(jQuery);
 
  // Initialize Firebase
+
   var config = {
-    apiKey: "AIzaSyCXv4i0clNVzeKsF9dm2Fxjy4-7EY5zvpg",
-    authDomain: "seccionm-8589b.firebaseapp.com",
-    databaseURL: "https://seccionm-8589b.firebaseio.com",
-    projectId: "seccionm-8589b",
-    storageBucket: "seccionm-8589b.appspot.com",
-    messagingSenderId: "946318383492"
+    apiKey: "AIzaSyCWiXpt0W0hBZwa8K8WNvp5pzYyPdJpqkg",
+    authDomain: "documentacion-f199d.firebaseapp.com",
+    databaseURL: "https://documentacion-f199d.firebaseio.com",
+    projectId: "documentacion-f199d",
+    storageBucket: "documentacion-f199d.appspot.com",
+    messagingSenderId: "615873173007"
   };
   firebase.initializeApp(config);
 
@@ -196,6 +197,21 @@ docRef.get().then(function(doc){
 //Eliminar Productos
 function EliminarP() {
 	var Producto = document.getElementById('IDP').value;
+	a = Producto+"a";
+    b = Producto+"b";
+    c = Producto+"c";
+    d = Producto+"d";
+
+     e = Producto+"e";
+     f = Producto+"f";
+     g = Producto+"g";
+     h = Producto+"h";
+
+	document.getElementById(e).removeChild(a);
+	document.getElementById(f).removeChild(b);
+	document.getElementById(g).removeChild(c);
+	document.getElementById(h).removeChild(d);
+
 	db.collection("Lista").doc(Producto).delete().then(function(){
 		console.log("EL producto ha sido eliminado con exito");
 		alert("EL producto ha sido eliminado con exito");
